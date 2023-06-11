@@ -1,0 +1,60 @@
+server:
+  port: 0
+
+
+spring:
+  application:
+    name: "user-service"
+  # mysql 설정
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://203.255.3.66:13306/user?serverTimezone=Asia/Seoul
+    username: root
+    password: 5607
+
+
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: none #create update none
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    show-sql: true
+    format_sql: true # JPA의 구현체인 Hibernate가 동작하면서 발생한 SQL의 가독성을 높여준다.
+    properties:
+      hibernate:
+        globally_quoted_identifiers: true
+
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    instance_id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+
+social:
+  google:
+    clientId: 1034826829416-bnngdut30pbevtvoi1cv81kd35jr5v7n.apps.googleusercontent.com
+    secret: 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
+    redirect: http://localhost:3000/login
+
+  naver:
+    clientId: l_3CKLVqB2QHRiAsq7vY
+    secret: VNf8XeVTD5
+    redirect: http://localhost:3000/login
+
+  kakao:
+    clientId: b10e517980a478ca257a11c89320a8a4
+    secret: Hwg0bsDZ4gtjskU86E6cX2TxstIOCCwM
+    redirect: http://localhost:3000/login
+
+jwt:
+  header: Authorization
+  secret: danfklaewroijafdsnlewarodnodasfnw3eriodsadsfnaafadsadsfdsfdsffdssdffdadsfsf423fadsdsfaeteggadfsfsdnof
+  duration: 30
+
+gateway:
+  ip: 172.18.0.3
