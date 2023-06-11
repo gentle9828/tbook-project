@@ -1,4 +1,5 @@
-FROM openjdk:21-ea-11-jdk-slim
-VOLUME /tmp
-COPY build/libs/cartService-1.0.jar CartService.jar
+FROM adoptopenjdk/openjdk11
+CMD ["./gradlew", "clean", "build"]
+ARG JAR_FILE_PATH=build/libs/*.jar
+COPY ${JAR_FILE_PATH} CartService.jar
 ENTRYPOINT ["java", "-jar", "CartService.jar"]

@@ -1,4 +1,5 @@
-FROM openjdk:21-ea-11-jdk-slim
-VOLUME /tmp
-COPY build/libs/apigateway-1.0.jar ApiGateway.jar
+FROM adoptopenjdk/openjdk11
+CMD ["./gradlew", "clean", "build"]
+ARG JAR_FILE_PATH=build/libs/*.jar
+COPY ${JAR_FILE_PATH} ApiGateway.jar
 ENTRYPOINT ["java", "-jar", "ApiGateway.jar"]

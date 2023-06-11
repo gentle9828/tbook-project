@@ -1,4 +1,5 @@
-FROM openjdk:21-ea-11-jdk-slim
-VOLUME /tmp
-COPY build/libs/tbooke-user-1.0.jar UserService.jar
+FROM adoptopenjdk/openjdk11
+CMD ["./gradlew", "clean", "build"]
+ARG JAR_FILE_PATH=build/libs/*.jar
+COPY ${JAR_FILE_PATH} UserService.jar
 ENTRYPOINT ["java", "-jar", "UserService.jar"]

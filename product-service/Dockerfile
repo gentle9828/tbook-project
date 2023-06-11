@@ -1,4 +1,5 @@
-FROM openjdk:21-ea-11-jdk-slim
-VOLUME /tmp
-COPY build/libs/item-service-1.0.jar ProductService.jar
+FROM adoptopenjdk/openjdk11
+CMD ["./gradlew", "clean", "build"]
+ARG JAR_FILE_PATH=build/libs/*.jar
+COPY ${JAR_FILE_PATH} ProductService.jar
 ENTRYPOINT ["java", "-jar", "ProductService.jar"]
