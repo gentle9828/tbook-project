@@ -1,0 +1,98 @@
+version: "3"
+services:
+  zookeeper:
+    image: wurstmeister/zookeeper
+    ports:
+      - "2181:2181"
+    depends_on:
+      - kafka
+    networks:
+      - tbook-network
+  kafka:
+    image: wurstmeister/kafka
+    ports:
+      - "9092:9092"
+    environment:
+      - KAFKA_ADVERTISED_HOST_NAME=kafka
+      - KAFKA_CREATE_TOPICS=update-quantity-product:1:1,cart-product-info:1:1,retrieve-product:1:1
+      - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - tbook-network
+    restart: always
+
+  eureka-server:
+    image: gentle9828/eureka-server:1.0
+    ports:
+      - "8761:8761"
+    depends_on:
+      - zookeeper
+    networks:
+      - tbook-network
+
+  apigateway-service:
+    image: gentle9828/apigateway-service:1.0
+    ports:
+      - "8000:8000"
+    environment:
+      - eureka.client.serviceUrl.defaultZone=http://eureka-server:8761/eureka/
+      - eureka.instance.preferIpAddress=true
+    depends_on:
+      - eureka-server
+    networks:
+      - tbook-network
+
+  user-service:
+    image: gentle9828/user-service:1.0
+    environment:
+      - eureka.client.serviceUrl.defaultZone=http://eureka-server:8761/eureka/
+      - eureka.instance.preferIpAddress=true
+    depends_on:
+      - apigateway-service
+    networks:
+      - tbook-network
+
+  product-service:
+    # image: gentle9828/product-service:1.0
+    build:
+      context: ./product-service
+      dockerfile: Dockerfile
+    environment:
+      - eureka.client.serviceUrl.defaultZone=http://eureka-server:8761/eureka/
+      - eureka.instance.preferIpAddress=true
+      - spring.kafka.bootstrapServers=kafka:9092
+    depends_on:
+      - apigateway-service
+    networks:
+      - tbook-network
+
+  cart-service:
+    # image: gentle9828/cart-service:1.0
+    build:
+      context: ./cart-service
+      dockerfile: Dockerfile
+    environment:
+      - eureka.client.serviceUrl.defaultZone=http://eureka-server:8761/eureka/
+      - eureka.instance.preferIpAddress=true
+      - spring.kafka.bootstrapServers=kafka:9092
+    depends_on:
+      - apigateway-service
+    networks:
+      - tbook-network
+
+  order-service:
+    # image: gentle9828/order-service:1.0
+    build:
+      context: ./order-service
+      dockerfile: Dockerfile
+    environment:
+      - eureka.client.serviceUrl.defaultZone=http://eureka-server:8761/eureka/
+      - eureka.instance.preferIpAddress=true
+      - spring.kafka.bootstrapServers=kafka:9092
+    depends_on:
+      - apigateway-service
+    networks:
+      - tbook-network
+networks:
+  tbook-network:

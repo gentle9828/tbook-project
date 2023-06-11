@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="45d62ba1-6511-4ea2-bf73-5c4095fa9ca4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/tbook-user/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/tbook-user/Dockerfile" afterDir="false" />
+    <list default="true" id="45d62ba1-6511-4ea2-bf73-5c4095fa9ca4" name="Changes" comment="##### 제목 - 50자 이내로 요약!&#10;&#10;### [커밋 타입]: [작업내용]&#10;&#10;##### 본문 - 한 줄에 최대 72 글자까지만 입력하기&#10;&#10;# 1. 무엇을 수정했는지&#10;# 2. 왜 수정했는지&#10;&#10;# 꼬릿말은 아래에 작성: ex) #이슈 번호&#10;-&#10;#   [커밋 타입]  리스트&#10;#   feat      : 기능 (새로운 기능)&#10;#   fix       : 버그 (버그 수정)&#10;#   refactor  : 리팩토링&#10;#   style     : 스타일 (코드 형식, 세미콜론 추가: 비즈니스 로직에 변경 없음)&#10;#   docs      : 문서 (문서 추가, 수정, 삭제)&#10;#   test      : 테스트 (테스트 코드 추가, 수정, 삭제: 비즈니스 로직에 변경 없음)&#10;#   chore     : 기타 변경사항 (빌드 스크립트 수정 등)&#10;#   post     : 블로그 포스트 추가 (신규 포스트 작성 및 수정)&#10;# ------------------&#10;#   [체크리스트]&#10;#     제목 첫 글자는 대문자로 작성했나요?&#10;#     제목은 명령문으로 작성했나요?&#10;#     제목 끝에 마침표(.) 금지&#10;#     제목과 본문을 한 줄 띄워 분리하기&#10;#     본문에 여러줄의 메시지를 작성할 땐 &quot;-&quot;로 구분했나요?&#10;# ------------------">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart-service/src/main/java/tbook/cartService/messagequeue/KafkaConsumerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/cart-service/src/main/java/tbook/cartService/messagequeue/KafkaConsumerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/example/itemservice/messagequeue/KafkaConsumerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/java/com/example/itemservice/messagequeue/KafkaConsumerConfig.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,6 +69,7 @@
       <workItem from="1686392430742" duration="927000" />
       <workItem from="1686394153950" duration="3346000" />
       <workItem from="1686456622231" duration="598000" />
+      <workItem from="1686493508935" duration="105000" />
     </task>
     <servers />
   </component>
