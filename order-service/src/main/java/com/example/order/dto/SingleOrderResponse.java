@@ -3,10 +3,11 @@ package com.example.order.dto;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
-import java.io.Serializable;
+import java.time.LocalDateTime;
 
 @Data
-public class OrderDto implements Serializable {
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class SingleOrderResponse {
     private String userId;
 
     private String productId;
@@ -15,6 +16,7 @@ public class OrderDto implements Serializable {
     private int unitPrice;
     private int totalPrice;
     private String paymentMethod;
+    private LocalDateTime createdAt;
 
     private String orderId;
 }

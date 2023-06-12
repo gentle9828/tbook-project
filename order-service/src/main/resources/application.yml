@@ -39,6 +39,3 @@ eureka:
   logging:
     level:
         com.example.order: DEBUG
-
-gateway:
-  ip: 172.18.0.3
