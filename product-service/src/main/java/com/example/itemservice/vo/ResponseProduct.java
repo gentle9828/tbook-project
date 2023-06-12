@@ -23,7 +23,7 @@ public class ResponseProduct {
     private String productGraphic;
     private BigDecimal productBattery;
     private BigDecimal productWeight;
-    private int productPrice;
+    private int productPrice;   
 
     private int stock;
     private int unitPrice;

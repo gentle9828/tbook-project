@@ -29,7 +29,7 @@ public class SecurityConfig {
 			// 서버에 인증정보를 저장 안하기 때문에 csrf 비활성화
 			.cors().configurationSource(request -> {
 				var cors = new CorsConfiguration();
-				cors.setAllowedOrigins(List.of("http://localhost:3000"));
+				cors.setAllowedOrigins(List.of("*"));
 				cors.setAllowedMethods(List.of("GET","POST", "PUT", "DELETE", "OPTIONS"));
 				cors.setAllowedHeaders(List.of("*"));
 				cors.addExposedHeader("Authorization");
